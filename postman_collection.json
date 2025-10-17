@@ -1,0 +1,154 @@
+{
+  "info": {
+    "name": "Tienda Online - Orders API",
+    "_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef0123456789",
+    "description": "Colección para probar el API de órdenes (create/read/update/delete). Base URL: http://localhost:8080",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Order",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerName\": \"Juan Perez\",\n  \"customerEmail\": \"juan@example.com\",\n  \"productDescription\": \"Camiseta roja talla M\",\n  \"quantity\": 2,\n  \"totalPrice\": 39.98,\n  \"status\": \"PENDING\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api","orders"]
+        }
+      },
+      "response": [
+        {
+          "name": "Created",
+          "body": "{\n  \"id\": 1,\n  \"customerName\": \"Juan Perez\",\n  \"customerEmail\": \"juan@example.com\",\n  \"productDescription\": \"Camiseta roja talla M\",\n  \"quantity\": 2,\n  \"totalPrice\": 39.98,\n  \"status\": \"PENDING\",\n  \"createdAt\": \"2025-10-16T12:00:00\"\n}",
+          "status": "Created",
+          "code": 201
+        }
+      ],
+      "description": "Crea una nueva orden. Body: JSON con los datos de la orden. Respuesta: 201 con la entidad creada."
+    },
+    {
+      "name": "Get All Orders",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api","orders"]
+        }
+      },
+      "response": [
+        {
+          "name": "OK",
+          "body": "[ /* array de órdenes */ ]",
+          "status": "OK",
+          "code": 200
+        }
+      ],
+      "description": "Obtiene todas las órdenes almacenadas."
+    },
+    {
+      "name": "Get Order By ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/orders/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api","orders","1"]
+        }
+      },
+      "response": [
+        {
+          "name": "OK",
+          "body": "{ /* orden con id 1 */ }",
+          "status": "OK",
+          "code": 200
+        },
+        {
+          "name": "Not Found",
+          "body": "",
+          "status": "Not Found",
+          "code": 404
+        }
+      ],
+      "description": "Obtiene una orden por su id. Si no existe devuelve 404."
+    },
+    {
+      "name": "Update Order",
+      "request": {
+        "method": "PUT",
+        "header": [ { "key": "Content-Type", "value": "application/json" } ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerName\": \"Juan P.\",\n  \"customerEmail\": \"juan@example.com\",\n  \"productDescription\": \"Camiseta azul talla L\",\n  \"quantity\": 1,\n  \"totalPrice\": 19.99,\n  \"status\": \"CONFIRMED\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/orders/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api","orders","1"]
+        }
+      },
+      "response": [
+        {
+          "name": "OK",
+          "body": "{ /* orden actualizada */ }",
+          "status": "OK",
+          "code": 200
+        },
+        {
+          "name": "Not Found",
+          "body": "",
+          "status": "Not Found",
+          "code": 404
+        }
+      ],
+      "description": "Actualiza una orden existente. Si no existe devuelve 404."
+    },
+    {
+      "name": "Delete Order",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/orders/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api","orders","1"]
+        }
+      },
+      "response": [
+        {
+          "name": "No Content",
+          "body": "",
+          "status": "No Content",
+          "code": 204
+        },
+        {
+          "name": "Not Found",
+          "body": "",
+          "status": "Not Found",
+          "code": 404
+        }
+      ],
+      "description": "Elimina una orden por id."
+    }
+  ]
+}
+
