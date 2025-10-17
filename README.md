@@ -84,6 +84,59 @@ Siguientes pasos sugeridos
 - Añadir autenticación/autorization si el API será público.
 - Añadir documentación OpenAPI/Swagger.
 
+---
+
+Perfiles de entorno y configuración (añadido)
+
+He añadido soporte por perfiles para facilitar el despliegue en distintos entornos. Archivos creados en `src/main/resources`:
+
+- `application.properties` (base) — ya existía y mantiene configuración por defecto (H2 y puerto 8080).
+- `application-dev.properties` — perfil de desarrollo (H2 en memoria, logging DEBUG).
+- `application-test.properties` — perfil para pruebas automatizadas (H2, puerto 8081, logging INFO).
+- `application-prod.properties` — perfil de producción (preparado para PostgreSQL; usa variables de entorno para credenciales y URL).
+
+Uso de variables de entorno
+- En `application-prod.properties` las credenciales y la URL de la BD se leen desde variables:
+  - `SPRING_DATASOURCE_URL`
+  - `SPRING_DATASOURCE_USERNAME`
+  - `SPRING_DATASOURCE_PASSWORD`
+  - `SERVER_PORT` (opcional)
+- No incluyas secretos en el repositorio. Usa `.env` (local) o tu sistema de secretos en producción (Kubernetes Secrets, Vault, KeyVault, etc.).
+
+Plantilla de variables
+- He añadido `.env.example` en la raíz del proyecto. Cópiala a `.env` y ajusta localmente si lo necesitas. Nunca commitees tu `.env` con secretos.
+
+Scripts de arranque
+- `scripts/start-dev.sh`  (bash) y `scripts/start-dev.bat` (Windows) — arranca con el perfil `dev`.
+- `scripts/start-test.sh` / `scripts/start-test.bat` — arranca con el perfil `test`.
+- `scripts/start-prod.sh` / `scripts/start-prod.bat` — arranca con el perfil `prod` y ejecuta el JAR si está construido.
+
+Ejemplos rápidos
+- Windows (cmd):
+  - Desarrollo: `scripts\start-dev.bat`
+  - Pruebas: `scripts\start-test.bat`
+  - Producción: `scripts\start-prod.bat` (asegúrate de tener variables de entorno configuradas)
+
+- Bash (Linux/macOS):
+  - Desarrollo: `./scripts/start-dev.sh`
+  - Pruebas: `./scripts/start-test.sh`
+  - Producción: `./scripts/start-prod.sh`
+
+Activar perfil manualmente
+- Puedes activar un perfil también con la variable `SPRING_PROFILES_ACTIVE` o con la opción JVM `-Dspring.profiles.active=prod`.
+
+Buenas prácticas y seguridad
+- Nunca commitees credenciales. Usa `.env.example` para documentar claves necesarias.
+- En producción, el proveedor de despliegue debe inyectar las credenciales mediante mecanismos seguros.
+
+Revisiones parciales y control de calidad
+- He añadido una plantilla de PR en `.github/PULL_REQUEST_TEMPLATE.md` y un `CONTRIBUTING.md` con un checklist para revisiones parciales (revisión temprana de integración, comprobación de configuración por perfil, no exponer secretos, pruebas mínimas, etc.).
+
+Si quieres, puedo:
+- Convertir estos `*.properties` a `*.yml` (solo dime si prefieres YAML en lugar de properties).
+- Añadir validaciones al arranque que fallen si variables críticas en producción no están definidas (p.ej. URL o credenciales).
+
+---
+
 Contacto
 - Proporciona el repositorio en GitHub y otorga acceso al equipo Digital NAO (añadir como colaboradores o equipo con permisos).
-
