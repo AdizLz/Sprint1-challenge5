@@ -1,0 +1,11 @@
+# Configuración opcional para Swagger UI
+urls:
+  - url: /v3/api-docs
+    name: Tienda Online API v1
+deepLinking: true
+displayRequestDuration: true
+defaultModelsExpandDepth: 1
+defaultModelRendering: example
+docExpansion: none
+persistAuthorization: false
+
