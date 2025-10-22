@@ -126,41 +126,6 @@ export SPRING_DATASOURCE_USERNAME=admin
 export SPRING_DATASOURCE_PASSWORD=your_password
 export SERVER_PORT=8080
 
-tienda-online/
-├── src/
-│   ├── main/
-│   │   ├── java/com/tienda/
-│   │   │   ├── config/
-│   │   │   │   └── OpenApiConfig.java          # Swagger configuration
-│   │   │   ├── controller/
-│   │   │   │   └── OrderController.java        # REST endpoints
-│   │   │   ├── model/
-│   │   │   │   └── Order.java                  # Order entity
-│   │   │   ├── repository/
-│   │   │   │   └── OrderRepository.java        # Database access
-│   │   │   ├── service/
-│   │   │   │   └── OrderService.java           # Business logic
-│   │   │   └── TiendaOnlineApplication.java    # Main class
-│   │   └── resources/
-│   │       ├── application.properties           # Main config
-│   │       ├── application-dev.properties       # Development config
-│   │       ├── application-test.properties      # Testing config
-│   │       ├── application-prod.properties      # Production config
-│   │       └── swagger-config.yaml              # Swagger UI config
-│   └── test/
-│       └── java/com/tienda/
-│           ├── controller/
-│           │   └── OrderControllerTest.java         # Unit tests
-│           └── integration/
-│               └── OrderIntegrationTest.java        # Integration tests
-├── docs/
-│   └── openapi.json                             # Generated API documentation
-├── .github/
-│   └── workflows/
-│       └── ci.yml                               # GitHub Actions CI/CD
-├── build.gradle                                 # Dependencies
-└── README.md                                    # This file
-
 **Problem**
 **First problem: **Developers waste time asking 'How does this endpoint work?' Without documentation, every new developer needs someone to explain the API. This costs time and money.
 **Second problem**: Bugs reach production. Without automated tests, we only discover errors when customers complain. This damages reputation and creates emergency fixes.
