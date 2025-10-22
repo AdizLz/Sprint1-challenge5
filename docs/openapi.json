@@ -1,0 +1,16 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Tienda Online API",
+    "description" : "API para gestionar órdenes en la tienda online",
+    "contact" : {
+      "name" : "Equipo Tienda",
+      "email" : "dev@tienda.local"
+    },
+    "version" : "v1"
+  },
+  "servers" : [ {
+    "url" : "/",
+    "description" : "Servidor local"
+  } ]
+}
