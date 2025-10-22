@@ -1,27 +1,32 @@
-# Tienda Online
-
-Proyecto de ejemplo Spring Boot con recurso `Order`.
+# 🛒 Tienda Online – Spring Boot REST API
 
 A Spring Boot REST API for managing online store orders with OpenAPI documentation and automated testing.
-Author: Asenet Abigail Lazcano Sauceda
-NAO ID: 3327
-Sprint: 3 - API Documentation & Testing
-Date: October 21, 2025
 
-What is this project?
-This is a REST API built with Spring Boot that allows you to create, read, update, and delete orders from an online store.
-Key features:
+**Author:** Asenet Abigail Lazcano Sauceda  
+**NAO ID:** 3327  
+**Sprint:** 3 — API Documentation & Testing  
+**Date:** October 21, 2025  
 
-✅ Complete CRUD operations for orders
-✅ Interactive documentation with Swagger UI
-✅ 11 automated tests (unit + integration)
-✅ Input validation
-✅ Ready for production deployment
-✅ CI/CD with GitHub Actions
+---
 
-Example Order
+## What is this project?
 
-json{
+This is a REST API built with **Spring Boot** that allows you to **create, read, update, and delete orders** from an online store.
+
+### ✅ Key Features
+- Complete CRUD operations for orders
+- Interactive API documentation with **Swagger UI**
+- **11 automated tests** (unit + integration)
+- Input validation
+- Ready for production deployment
+- CI/CD using **GitHub Actions**
+
+---
+
+## 🧾 Example Order (JSON)
+
+``json
+{
   "id": 1,
   "customerName": "John Doe",
   "customerEmail": "john@example.com",
@@ -32,6 +37,7 @@ json{
   "createdAt": "2025-10-21T10:30:00"
 }
 
+---
 **Instrucciones rápidas:
 **
 **Requirements**
